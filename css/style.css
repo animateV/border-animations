@@ -1,0 +1,228 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-width: var(--container-min-width);
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+
+/* Переменные */
+:root {
+
+  /* Контейнер */
+  --container-min-width: 320px;
+  --container-max-width: 1920px;
+
+  /*Цвета*/
+  --bluish-green: #03e9f4;
+  --bluish-active: #26a5ac;
+  --dark: #050801;
+  --dark-extra: #0005;
+
+  /* Время */
+  --transition-time: .5s;
+}
+
+.background-video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 70px;
+  row-gap: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
+  max-width: var(--container-max-width);
+}
+
+.btn {
+  /* Базовые стили для кнопки */
+  position: relative;
+  padding: 25px 30px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  overflow: hidden;
+  color: var(--bluish-green);
+  background-color: transparent;
+  transition: background-color, var(--transition-time);
+  cursor: pointer;
+}
+
+@media (any-hover: hover) {
+
+  /* Для того что бы убрать зациклиное состояние hover на сенсорном устройстве */
+  .button-animy:hover {
+    /* Эффект кнопки при hover */
+    background-color: var(--bluish-green);
+    color: var(--dark);
+    box-shadow: 0 0 40px var(--bluish-green),
+      0 0 70px var(--bluish-green),
+      0 0 120px var(--bluish-green),
+      0 0 140px var(--bluish-green);
+    -webkit-box-reflect: below 1px linear-gradient(transparent, var(--dark-extra));
+  }
+}
+
+.button-animy:focus-visible {
+  /* Эффект кнопки при focus */
+  background-color: var(--bluish-green);
+  color: var(--dark);
+  box-shadow: 0 0 40px var(--bluish-green),
+    0 0 70px var(--bluish-green),
+    0 0 120px var(--bluish-green),
+    0 0 140px var(--bluish-green);
+  -webkit-box-reflect: below 1px linear-gradient(transparent, var(--dark-extra));
+}
+
+.button-animy:active {
+  /* Эффект кнопки при active */
+  background-color: var(--bluish-active);
+  color: var(--dark);
+  box-shadow: 0 0 40px var(--bluish-active),
+    0 0 70px var(--bluish-active),
+    0 0 120px var(--bluish-active),
+    0 0 140px var(--bluish-active);
+  -webkit-box-reflect: below 1px linear-gradient(transparent, var(--dark-extra));
+}
+
+.button-animy:first-child {
+  /* Меняем цвет первой кнопки */
+  filter: hue-rotate(225deg);
+}
+
+.button-animy:last-child {
+  /* Меняем цвет третьей кнопки (последней) */
+  filter: hue-rotate(90deg);
+}
+
+.button-animy .decorative {
+  position: absolute;
+  display: block;
+}
+
+
+
+/* Верхняя полоса */
+.button-animy .decorative:nth-child(1) {
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--bluish-green));
+  animation: animate-one 1s infinite;
+}
+
+/* Кадры для анимации верхней полосы */
+@keyframes animate-one {
+
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+
+}
+
+
+
+/* Правая полоса */
+.button-animy .decorative:nth-child(2) {
+  top: -100%;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--bluish-green));
+  animation: animate-two 1s infinite;
+  animation-delay: 0.25s;
+}
+
+/* Кадры для анимации правой полосы */
+@keyframes animate-two {
+
+  0% {
+    top: -100%;
+  }
+
+  100% {
+    top: 100%;
+  }
+
+}
+
+
+
+/* Нижняя полоса */
+.button-animy .decorative:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(270deg, transparent, var(--bluish-green));
+  animation: animate-three 1s infinite;
+  animation-delay: 0.5s;
+}
+
+/* Кадры для анимации нижней полосы */
+@keyframes animate-three {
+
+  0% {
+    right: -100%;
+  }
+
+  100% {
+    right: 100%;
+  }
+
+}
+
+
+
+/* Левая полоса */
+.button-animy .decorative:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  height: 100%;
+  width: 1px;
+  background: linear-gradient(360deg, transparent, var(--bluish-green));
+  animation: animate-for 1s infinite;
+  animation-delay: 0.75s;
+}
+
+/* Кадры для анимации левой полосы */
+@keyframes animate-for {
+
+  0% {
+    bottom: -100%;
+  }
+
+  100% {
+    bottom: 100%;
+  }
+
+}
